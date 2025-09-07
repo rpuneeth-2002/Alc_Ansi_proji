@@ -2,6 +2,7 @@
 - name: create a volume group using pv /dev/sdd
   hosts: localhost
   become: true
+  remote_user: ansible
   gather_facts: false
   tasks:
     - name: create vg 
