@@ -4,6 +4,7 @@
 - name: Play1 for install http, firewalld and https
   hosts: localhost
   become: true
+  remote_user: ansible
   become_user: root
   gather_facts: false
   tasks:
