@@ -1,0 +1,15 @@
+---
+- name: demonstrate file module
+  hosts: localhost
+  become: true
+  gather_facts: false
+  become_user: root
+  tasks:
+   - name: Creat a soft link
+     file: 
+      src: /etc/picsDir
+      dest: /etc/mylink      
+      state: link
+      owner: root
+      group: ansible
+      mode: '0750'

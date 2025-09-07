@@ -1,0 +1,21 @@
+---
+- name: Play to create a group and then user
+  hosts: alc
+  become: true
+  gather_facts: false
+  become_user: root
+  tasks:
+   - name: Task1 - Create group 
+   #Create a group
+     ansible.builtin.group:
+      name: alc
+      state: present
+   - name: Task2 - create user and add the above created group as primary group
+   #User Module to create user
+     ansible.builtin.user: 
+      name: curl1
+      group: alc
+      comment: Curl1 for alc project
+      state: present
+      password: $6$sdjhdjkd$M3WsSycmMphaR3MzL.Ji7UrSfe43b/E1W2VH2yPFt8PNu2BovTlnJslqqqwCjAESwX2gbhDSIPiTHkuPNs2sp.
+...

@@ -1,0 +1,15 @@
+---
+- name: My First PlayBook
+  hosts: alc
+  become: true
+  gather_facts: false
+  become_user: root
+  tasks:
+   - name: Create User
+     user: 
+      name: punee-user
+      password: $6$sdjhdjkd$M3WsSycmMphaR3MzL.Ji7UrSfe43b/E1W2VH2yPFt8PNu2BovTlnJslqqqwCjAESwX2gbhDSIPiTHkuPNs2sp.
+      comment: "This is my first script on Ansible"
+      state: present
+      #state: absent
+...      

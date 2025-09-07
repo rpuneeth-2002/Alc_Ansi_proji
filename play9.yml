@@ -1,0 +1,33 @@
+---
+#A single Playbook can contain multiple plays
+#Beloow demonstrate the same
+- name: Play1 for install http, firewalld and https
+  hosts: localhost
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+   - name: install httpd, firewalld, and https
+     yum:
+      name:
+        - httpd
+        - mod_ssl
+        - firewalld
+      state: present
+- name: play two for starting firewalldand http webservices
+  become: true
+  become_user: root
+  hosts: localhost
+  gather_facts: false
+  tasks:
+   - name: start fireewalld service
+     service:
+      name: firewalld
+      state: started
+      enabled: yes
+   - name: start http  
+     service:
+      name: httpd
+      state: started
+      enabled: yes
+...      
